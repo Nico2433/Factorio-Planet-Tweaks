@@ -13,6 +13,10 @@ A compatibility mod that balances and tweaks interactions between various planet
 - Rocket ammo productivity removed (uses Castra explosive ammo instead)
 - Bullets productivity moved to Castra
 
+**Works with: [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora?from=search)**
+
+- Removed engine productivity (Cerys already have one)
+
 ### [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora?from=search)
 
 **Works with: [Secretas&Frozeta](https://mods.factorio.com/mod/secretas?from=search)**
