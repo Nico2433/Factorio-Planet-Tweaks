@@ -1,11 +1,28 @@
 {
-    "name": "Template-Factorio",
+    "name": "nayfall-planet-tweaks",
     "version": "1.0.0",
     "factorio_version": "2.0",
-    "title": "Template-Factorio",
+    "title": "Nayfall-Planet-Tweaks",
     "author": "Nayfall",
     "description": "",
     "dependencies": [
-        "base >= 2.0"
+        "base >= 2.0",
+        "space-age",
+        "? castra",
+        "? corrundum",
+        "? Igrys",
+        "? maraxsis",
+        "? janus",
+        "? Cerys-Moon-of-Fulgora",
+        "? secretas",
+        "? metal-and-stars",
+        "? planet-muluna",
+        "? Paracelsin",
+        "? skewer_shattered_planet",
+        "? rubia",
+        "? OCs_ammo_casting",
+        "? vtk-cannon-turret",
+        "? cupric-asteroids",
+        "? aai-industry"
     ]
 }
