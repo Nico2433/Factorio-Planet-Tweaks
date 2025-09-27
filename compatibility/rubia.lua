@@ -5,7 +5,9 @@ if mods["rubia"] then
         "secretas"
     }
 
+    -- If Secretas
     if mods[compatMods[1]] then
+        -- Disables efficiency module 4
         local efficiency_module_tech = data.raw["technology"]["rubia-efficiency-module4"]
         efficiency_module_tech.enabled = false
 

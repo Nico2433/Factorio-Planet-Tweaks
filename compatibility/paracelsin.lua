@@ -5,8 +5,10 @@ if mods["Paracelsin"] then
         "Moshine"
     }
 
+    -- If Moshine
     if mods[compatMods[1]] then
         ----------------------- TECHNOLOGY -----------------------
+        -- Copy Moshine technology cost and prerequisites to Paracelsin solar panel and accumulator
         local big_solar_energy_tech = data.raw["technology"]["big-solar-energy"]
         local big_accumulator_tech = data.raw["technology"]["electric-energy-big-accumulators"]
 
@@ -22,6 +24,7 @@ if mods["Paracelsin"] then
         big_accumulator_tech.enabled = false
 
         ----------------------- RECIPES -----------------------
+        -- Copy Moshine recipes category and surface conditions to Paracelsin solar panel and accumulator (Ingredients are divided by 4)
         local modifier = "/4"
 
         local big_solar_panel_rec = data.raw["recipe"]["big-solar-panel"]
@@ -30,17 +33,18 @@ if mods["Paracelsin"] then
         local solar_matrix_rec = data.raw["recipe"]["solar-matrix"]
         local accumulator_v2_rec = data.raw["recipe"]["accumulator-v2"]
 
-        solar_matrix_rec.category = "electronics"
+        solar_matrix_rec.category = big_solar_panel_rec.category
         solar_matrix_rec.surface_conditions = big_solar_panel_rec.surface_conditions
         solar_matrix_rec.ingredients = utils.replicateIngredients("big-solar-panel", modifier)
         utils.hideItem(big_solar_panel_rec)
 
-        accumulator_v2_rec.category = "electronics"
+        accumulator_v2_rec.category = big_accumulator_rec.category
         accumulator_v2_rec.surface_conditions = big_accumulator_rec.surface_conditions
         accumulator_v2_rec.ingredients = utils.replicateIngredients("big-accumulator", modifier)
         utils.hideItem(big_accumulator_rec)
 
         ----------------------- PROPERTIES -----------------------
+        -- Copy Moshine properties to Paracelsin solar panel and accumulator (Divided by 4)
         local big_solar_panel_props = data.raw["solar-panel"]["big-solar-panel"]
         local big_accumulator_props = data.raw["accumulator"]["big-accumulator"]
 

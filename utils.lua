@@ -1,11 +1,5 @@
 local utils = {}
 
-utils.sendMsg = function(message)
-    for _, player in pairs(game.players) do
-        player.print(message)
-    end
-end
-
 utils.hideItem = function(item)
     item.hidden = true
     item.hidden_in_factoriopedia = true
@@ -86,7 +80,7 @@ utils.replicateIngredients = function(sourceRecipe, modifier, overrides)
     local original = data.raw.recipe[sourceRecipe].ingredients
     local newIngredients = {}
 
-    for i, ingredient in ipairs(original) do
+    for _, ingredient in ipairs(original) do
         local newIngredient = table.deepcopy(ingredient)
 
         -- Check if this ingredient has a specific override
@@ -127,9 +121,6 @@ utils.janus.make_rotated_animation_variations_from_sheet = function(variation_co
         end
 
         local height_in_frames = math.floor((frame_count * variation.direction_count + line_length - 1) / line_length)
-        -- if (height_in_frames ~= 1) then
-        --   log("maybe broken sheet: h=" .. height_in_frames .. ", vc=" .. variation_count .. ", " .. variation.filename)
-        -- end
         variation.y = variation.height * (i - 1) * height_in_frames
     end
 

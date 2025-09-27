@@ -2,6 +2,7 @@ if mods["janus"] then
     local utils                    = require("utils")
 
     ----------------------- TIME DISTORTER -----------------------
+    -- Adds module slots to time distorter
     local time_distorter           = data.raw["assembling-machine"]["janus-time-distorter"]
     time_distorter.module_slots    = 1
     time_distorter.allowed_effects = { "speed", "productivity", "consumption", "pollution", "quality" }
@@ -34,6 +35,7 @@ if mods["janus"] then
 
     local liquids                  = { "oil", "water", "thruster%-fuel" }
 
+    -- Enable productivity for intermediate recipes
     for _, recipeName in ipairs(recipes) do
         local recipe = data.raw["recipe"][recipeName]
 
@@ -55,6 +57,7 @@ if mods["janus"] then
     end
 
     ----------------------- BULK INSERTER -----------------------
+    -- Adds a time shifted bulk inserter
     local bulk_inserter_time_shifted                           = table.deepcopy(data.raw["inserter"]["bulk-inserter"])
 
     bulk_inserter_time_shifted.name                            = "janus-bulk-inserter"
@@ -133,6 +136,7 @@ if mods["janus"] then
         bulk_inserter_recipe })
 
     ----------------------- STACK INSERTER -----------------------
+    -- Adds a time shifted stack inserter
     local stack_inserter_time_shifted                           = table.deepcopy(data.raw["inserter"]["stack-inserter"])
 
     stack_inserter_time_shifted.name                            = "janus-stack-inserter"
@@ -211,6 +215,7 @@ if mods["janus"] then
         stack_inserter_recipe })
 
     ----------------------- TECHNOLOGY -----------------------
+    -- Adds new inserters to technology
     local time_shifted_tech = data.raw["technology"]["janus-fast-inserter"]
     utils.extendTable(time_shifted_tech.effects, {
         { type = "unlock-recipe", recipe = "janus-bulk-inserter" },

@@ -10,6 +10,7 @@ if mods["metal-and-stars"] then
 
     local bullet_productivity = data.raw["technology"]["bullet-productivity"]
 
+    -- Adds basic bullets and shotgun ammo to bullet productivity
     utils.extendTable(bullet_productivity.effects, {
         {
             type = "change-recipe-productivity",
@@ -28,12 +29,16 @@ if mods["metal-and-stars"] then
         }
     })
 
+    -- If Castra
     if mods[compatMods[1]] then
+        -- Disables railgun ammo productivity because they are already on castra heavy ammo productivity
         local railgun_ammo_productivity = data.raw["technology"]["railgun-ammo-productivity"]
         railgun_ammo_productivity.enabled = false
+        -- Disables rocket ammo productivity because castra already have explosive ammo productivity
         local rocket_ammo_productivity = data.raw["technology"]["rocket-ammo-productivity"]
         rocket_ammo_productivity.enabled = false
 
+        -- Moves bullets productivity to castra
         bullet_productivity.prerequisites = { "battlefield-science-pack" }
         bullet_productivity.unit = {
             count_formula = "1.5^L*1000",
@@ -45,6 +50,7 @@ if mods["metal-and-stars"] then
             time = 60,
         }
 
+        -- Adds castra crafting to bullets productivity
         utils.extendTable(bullet_productivity.effects, {
             {
                 type = "change-recipe-productivity",
@@ -59,12 +65,16 @@ if mods["metal-and-stars"] then
         })
     end
 
+    -- If Muluna
     if mods[compatMods[2]] then
+        -- Disable thruster fuel productivity because Muluna alreaddy have theirs
         local thruster_productivity = data.raw["technology"]["space-fuel-productivity"]
         thruster_productivity.enabled = false
     end
 
+    -- If Ammo casting
     if mods[compatMods[3]] then
+        -- Adds casting to bullets productivity
         utils.extendTable(bullet_productivity.effects, {
             {
                 type = "change-recipe-productivity",
@@ -94,7 +104,9 @@ if mods["metal-and-stars"] then
         })
     end
 
+    -- If Cupric asteroids
     if mods[compatMods[4]] then
+        -- Adds smart rounds to bullet productivity
         utils.extendTable(bullet_productivity.effects, {
             {
                 type = "change-recipe-productivity",

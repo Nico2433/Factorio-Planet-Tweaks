@@ -11,6 +11,7 @@ if mods["castra"] then
     local ammo_productivity = data.raw["technology"]["physical-ammo-productivity"]
     local explosives_productivity = data.raw["technology"]["explosive-ammo-productivity"]
 
+    -- If Metal and stars
     if mods[compatMods[1]] then
         local removeAmmo = {
             "firearm-magazine",
@@ -22,6 +23,7 @@ if mods["castra"] then
             "piercing-shotgun-shell"
         }
 
+        -- Remove bullets productivity from physical ammo productivity (Physical ammo productivity -> Heavy ammo productivity)
         for _, recipe_name in ipairs(removeAmmo) do
             utils.removeFromTable(ammo_productivity.effects, recipe_name, "recipe")
         end
@@ -45,10 +47,12 @@ if mods["castra"] then
             "explosive-uranium-cannon-shell"
         }
 
+        -- Remove some explosives from explosives productivity because they are already added to heavy ammo productivity
         for _, recipe_name in ipairs(removeExplosives) do
             utils.removeFromTable(explosives_productivity.effects, recipe_name, "recipe")
         end
 
+        -- Adds metal and stars gauss rockets to productivity
         utils.extendTable(explosives_productivity.effects, {
             {
                 type = "change-recipe-productivity",
@@ -58,12 +62,16 @@ if mods["castra"] then
         })
     end
 
+    -- If Cerys
     if mods[compatMods[2]] then
+        -- Disable engine productivity because cerys have theirs
         local engine_productivity = data.raw["technology"]["engine-productivity"]
         engine_productivity.enabled = false
     end
 
+    -- If Ammo casting
     if mods[compatMods[3]] then
+        -- Adds all ammo casting recipes
         utils.extendTable(ammo_productivity.effects, {
             {
                 type = "change-recipe-productivity",
@@ -141,7 +149,9 @@ if mods["castra"] then
         })
     end
 
+    -- If Cannon turrets
     if mods[compatMods[4]] then
+        -- Adds all cannon turrets recipes
         utils.extendTable(ammo_productivity.effects, {
             {
                 type = "change-recipe-productivity",
@@ -166,7 +176,9 @@ if mods["castra"] then
         })
     end
 
-    if mods[compatMods[2]] and mods[compatMods[3]] then
+    -- If Metal and stars | Ammo casting
+    if mods[compatMods[1]] and mods[compatMods[3]] then
+        -- Adds casting of metal and stars rockets
         utils.extendTable(explosives_productivity.effects, {
             {
                 type = "change-recipe-productivity",
@@ -176,7 +188,9 @@ if mods["castra"] then
         })
     end
 
+    -- If Ammo casting | Cannon turrets
     if mods[compatMods[3]] and mods[compatMods[4]] then
+        -- Adds casting of cannon turrets magazines
         utils.extendTable(ammo_productivity.effects, {
             {
                 type = "change-recipe-productivity",
